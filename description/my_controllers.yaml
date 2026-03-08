@@ -1,0 +1,48 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+    use_sim_time: true 
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - arm_base2_joint
+      - arm_slide_joint_L
+      - arm_slide_joint_R
+    
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+    # ปรับปรุง PID Gains เพื่อยกวัตถุหนัก 10 kg
+    gains:
+      arm_base2_joint:
+        p: 5000.0  # เพิ่มจาก 1500 เพื่อให้มีแรงตอบสนองต่อโหลดหนักได้ฉับไว
+        i: 500.0   # เพิ่มจาก 10 เพื่อสะสมแรงยกเอาชนะแรงโน้มถ่วงในระยะยาว
+        d: 200.0   # เพิ่มจาก 100 เพื่อหน่วงการสั่นสะเทือนจากค่า P ที่สูงขึ้น
+        i_clamp: 1000.0 # สำคัญมาก: ต้องสูงกว่า 100 เพื่อให้แรงพยายาม (Effort) ส่งไปถึงมอเตอร์เพียงพอ
+      
+      arm_slide_joint_L:
+        p: 5000.0  # เพิ่มแรงบีบเริ่มต้น
+        i: 500.0   # ช่วยให้แรงบีบคงที่เมื่อสัมผัสวัตถุ
+        d: 100.0
+        i_clamp: 1000.0 # ยอมให้ใช้แรงบีบที่สูงขึ้นเพื่อกันกล่องลื่นหลุด
+      
+      arm_slide_joint_R:
+        p: 5000.0
+        i: 500.0
+        d: 100.0
+        i_clamp: 1000.0
+
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: true
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
