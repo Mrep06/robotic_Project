@@ -67,7 +67,7 @@ class CombinedTeleop(Node):
             return
             
         req = AttachLink.Request()
-        req.model1_name = 'robot779_1'      
+        req.model1_name = 'robot779'      
         req.link1_name = 'arm_link_L'    
         req.model2_name = 'box_final1'    
         req.link2_name = 'link_1'       
@@ -81,7 +81,7 @@ class CombinedTeleop(Node):
             return
             
         req = DetachLink.Request()
-        req.model1_name = 'robot779_1'
+        req.model1_name = 'robot779'
         req.link1_name = 'arm_link_L'
         req.model2_name = 'box_final1'
         req.link2_name = 'link_1'

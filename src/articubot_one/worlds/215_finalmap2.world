@@ -4723,5 +4723,6 @@
       <allow_auto_disable>1</allow_auto_disable>
       <pose>3.18413 4.42357 0 0 -0 0</pose>
     </model>
+    <plugin name="gazebo_link_attacher" filename="libgazebo_link_attacher.so"/>
   </world>
 </sdf>
