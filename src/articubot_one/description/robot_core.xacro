@@ -45,8 +45,8 @@
             <box size="0.3 0.3 0.15"/>
         </geometry>
     </collision>
-    <xacro:inertial_box mass="50" x="0.3" y="0.3" z="0.15">
-        <origin xyz="0 0 0.075" rpy="0 0 0"/>
+    <xacro:inertial_box mass="200" x="0.3" y="0.3" z="0.15">
+        <origin xyz="-0.15 0 0.01" rpy="0 0 0"/>
     </xacro:inertial_box>
 </link>
 
@@ -59,7 +59,7 @@
 <joint name="front_left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="front_left_wheel"/>
-    <origin xyz="0.075 0.17 0.05" rpy="-${pi/2} 0 0"/>
+    <origin xyz="0.14 0.17 0.05" rpy="-${pi/2} 0 0"/>
     <axis xyz="0 0 1"/>
 </joint>
 
@@ -85,7 +85,7 @@
 <joint name="back_left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="back_left_wheel"/>
-    <origin xyz="-0.075 0.17 0.05" rpy="-${pi/2} 0 0"/>
+    <origin xyz="-0.14 0.17 0.05" rpy="-${pi/2} 0 0"/>
     <axis xyz="0 0 1"/>
 </joint>
 
@@ -111,7 +111,7 @@
 <joint name="front_right_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="front_right_wheel"/>
-    <origin xyz="0.075 -0.17 0.05" rpy="${pi/2} 0 0"/>
+    <origin xyz="0.14 -0.17 0.05" rpy="${pi/2} 0 0"/>
     <axis xyz="0 0 -1"/>
 </joint>
 
@@ -137,7 +137,7 @@
 <joint name="back_right_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="back_right_wheel"/>
-    <origin xyz="-0.075 -0.17 0.05" rpy="${pi/2} 0 0"/>
+    <origin xyz="-0.14 -0.17 0.05" rpy="${pi/2} 0 0"/>
     <axis xyz="0 0 -1"/>
 </joint>
 
@@ -209,7 +209,7 @@
     <child link="arm_base2"/>
     <origin xyz="0.05 0 0.025" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit lower="0" upper="0.2" effort="1000" velocity="1.0"/>
+    <limit lower="0" upper="0.2" effort="1000" velocity="0.2"/>
     <dynamics damping="50.0" friction="20.0"/>
 </joint>
 
@@ -227,7 +227,7 @@
             <box size="0.05 0.54 0.05"/>
         </geometry>
     </collision>
-    <xacro:inertial_box mass="5" x="0.05" y="0.54" z="0.05">
+    <xacro:inertial_box mass="20" x="0.05" y="0.54" z="0.05">
         <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:inertial_box>
 </link>

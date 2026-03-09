@@ -50,7 +50,7 @@ class CombinedTeleop(Node):
         
         point = JointTrajectoryPoint()
         point.positions = [self.base2_pos, self.slide_pos, -self.slide_pos]
-        point.time_from_start = Duration(sec=0, nanosec=100000000) # 0.1 sec
+        point.time_from_start = Duration(sec=0, nanosec=500000000) # 0.5 sec
         
         trajectory_msg.points.append(point)
         self.arm_pub.publish(trajectory_msg)
@@ -67,7 +67,7 @@ class CombinedTeleop(Node):
             return
             
         req = AttachLink.Request()
-        req.model1_name = 'robot779'      
+        req.model1_name = 'robot779_1'      
         req.link1_name = 'arm_link_L'    
         req.model2_name = 'box_final1'    
         req.link2_name = 'link_1'       
@@ -81,7 +81,7 @@ class CombinedTeleop(Node):
             return
             
         req = DetachLink.Request()
-        req.model1_name = 'robot779'
+        req.model1_name = 'robot779_1'
         req.link1_name = 'arm_link_L'
         req.model2_name = 'box_final1'
         req.link2_name = 'link_1'
